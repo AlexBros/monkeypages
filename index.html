@@ -37,7 +37,7 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html { scroll-behavior: smooth; scroll-padding-top: 140px; }
+  html { scroll-behavior: smooth; scroll-padding-top: 110px; }
 
   body {
     font-family: var(--f-body);
@@ -150,24 +150,10 @@
     .has-cursor .cursor-dot, .has-cursor .cursor-ring { display: block; }
   }
 
-  /* ---------- Credit-Leiste ---------- */
-  .credit-bar {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 85;
-    background: var(--choco);
-    color: #ffe8c7;
-    font-family: var(--f-hand);
-    font-weight: 600;
-    font-size: 1.1rem;
-    text-align: center;
-    padding: 3px 12px 5px;
-  }
-
   /* ---------- Nav ---------- */
   .nav {
     position: fixed;
-    top: 48px; left: 50%;
+    top: 18px; left: 50%;
     transform: translateX(-50%);
     z-index: 80;
     width: min(var(--maxw), calc(100% - 32px));
@@ -181,7 +167,7 @@
     box-shadow: 0 10px 30px -14px rgba(92, 59, 30, 0.25);
     transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .nav.nav-hidden { transform: translateX(-50%) translateY(-190%); }
+  .nav.nav-hidden { transform: translateX(-50%) translateY(-140%); }
   .logo {
     font-family: var(--f-display);
     font-weight: 800;
@@ -1173,8 +1159,6 @@
 <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
 <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
-
-<div class="credit-bar">Von Lisa Arenhövel mit ❤️</div>
 
 <header class="nav" id="nav">
   <a class="logo" href="#top">
