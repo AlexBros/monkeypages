@@ -805,6 +805,62 @@
     font-weight: 600;
   }
 
+  /* ---------- Referenzen ---------- */
+  .refs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-top: 56px;
+  }
+  .ref-card {
+    display: block;
+    text-decoration: none;
+    background: var(--card);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  }
+  .ref-card:hover {
+    transform: translateY(-6px) rotate(-0.4deg);
+    border-color: var(--brown);
+    box-shadow: 0 10px 0 0 rgba(92, 59, 30, 0.14);
+  }
+  .ref-preview { padding: 20px 20px 0; background: var(--bg-2); }
+  .ref-window {
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+    border: 2px solid var(--brown);
+    border-bottom: none;
+    background: #fff;
+  }
+  .ref-chrome { display: flex; gap: 4px; padding: 8px 10px; background: #f6efe3; border-bottom: 1px solid var(--line); }
+  .ref-chrome i { width: 7px; height: 7px; border-radius: 50%; background: #d8c9b2; }
+  .ref-hero { padding: 14px 12px 12px; background: var(--rc); color: #fff; }
+  .ref-hero strong { font-family: var(--f-display); font-weight: 700; font-size: 0.82rem; display: block; }
+  .ref-hero i { display: block; height: 5px; border-radius: 3px; background: rgba(255, 255, 255, 0.45); margin-top: 7px; width: 70%; }
+  .ref-rows { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 12px; }
+  .ref-rows i { height: 24px; border-radius: 6px; background: var(--rt); }
+  .ref-rows i:first-child { background: var(--ra); }
+  .ref-body { padding: 22px 26px 26px; }
+  .ref-body h3 { font-family: var(--f-display); font-weight: 700; font-size: 1.2rem; margin-bottom: 4px; }
+  .ref-body > p { font-size: 0.92rem; color: var(--muted); margin-bottom: 14px; }
+  .ref-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+  .ref-tags span {
+    font-family: var(--f-mono);
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 99px;
+    background: rgba(255, 197, 61, 0.25);
+    color: var(--brown);
+    border: 1px solid rgba(92, 59, 30, 0.2);
+  }
+  .ref-link { font-weight: 700; color: var(--orange); font-size: 0.95rem; }
+  .ref-card:hover .ref-link { text-decoration: underline; }
+
   /* ---------- Preise ---------- */
   .preise-head { text-align: center; }
   .preise-head .section-lead { margin: 0 auto; }
@@ -1087,7 +1143,7 @@
     .section { padding: 90px 0; }
     .hero { padding: 130px 0 110px; min-height: 0; }
     .hero-inner { grid-template-columns: 1fr; gap: 70px; }
-    .features-grid, .steps, .price-grid, .stats-grid { grid-template-columns: 1fr; }
+    .features-grid, .steps, .price-grid, .stats-grid, .refs-grid { grid-template-columns: 1fr; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
     .steps-line { display: none; }
     .nav-links a:not(.btn) { display: none; }
@@ -1142,6 +1198,7 @@
   <nav class="nav-links">
     <a href="#leistungen">Leistungen</a>
     <a href="#ablauf">Ablauf</a>
+    <a href="#referenzen">Referenzen</a>
     <a href="#preise">Preise</a>
     <a href="#faq">FAQ</a>
     <a class="btn btn-primary btn-sm" href="#kontakt" data-magnetic>Projekt starten</a>
@@ -1403,6 +1460,68 @@
             <p>Nach der Abnahme wählen Sie Paket und Laufzeit — 12, 24 oder 36 Monate. Ab dann ist alles inklusive: Hosting, Pflege, Änderungen.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Referenzen -->
+  <section class="section refs" id="referenzen">
+    <div class="container">
+      <span class="eyebrow" data-reveal>Referenzen</span>
+      <h2 data-reveal>Seiten, die wir <span class="grad-text">gebaut haben.</span></h2>
+      <p class="section-lead" data-reveal>
+        Drei Beispiele aus Handwerk, Praxis und Therapie — klicken Sie sich durch,
+        alle Demos sind voll funktionsfähig, inklusive Online-Terminbuchung.
+      </p>
+
+      <div class="refs-grid">
+        <a class="ref-card" href="referenzen/malerbetrieb-krueger/" style="--rc:#21409a; --ra:#f2591c; --rt:#eef0f5;" data-reveal>
+          <div class="ref-preview" aria-hidden="true">
+            <div class="ref-window">
+              <div class="ref-chrome"><i></i><i></i><i></i></div>
+              <div class="ref-hero"><strong>Malerbetrieb Krüger</strong><i></i></div>
+              <div class="ref-rows"><i></i><i></i><i></i></div>
+            </div>
+          </div>
+          <div class="ref-body">
+            <h3>Malerbetrieb Krüger</h3>
+            <p>Meisterbetrieb aus Bonn — Festpreis-Kultur, Besichtigungstermine online buchbar.</p>
+            <div class="ref-tags"><span>Handwerk</span><span>Terminbuchung</span></div>
+            <span class="ref-link">Demo ansehen →</span>
+          </div>
+        </a>
+
+        <a class="ref-card" href="referenzen/praxis-dr-sommer/" style="--rc:#0c4a5e; --ra:#0fa588; --rt:#e9f6f2;" data-reveal>
+          <div class="ref-preview" aria-hidden="true">
+            <div class="ref-window">
+              <div class="ref-chrome"><i></i><i></i><i></i></div>
+              <div class="ref-hero"><strong>Praxis Dr. Sommer</strong><i></i></div>
+              <div class="ref-rows"><i></i><i></i><i></i></div>
+            </div>
+          </div>
+          <div class="ref-body">
+            <h3>Zahnarztpraxis Dr. Sommer</h3>
+            <p>Zahnmedizin in Köln — Patienten buchen Kontrolle und Prophylaxe rund um die Uhr.</p>
+            <div class="ref-tags"><span>Zahnarzt</span><span>Terminbuchung</span></div>
+            <span class="ref-link">Demo ansehen →</span>
+          </div>
+        </a>
+
+        <a class="ref-card" href="referenzen/physio-vital/" style="--rc:#1d4a26; --ra:#e86f4e; --rt:#f6f3ea;" data-reveal>
+          <div class="ref-preview" aria-hidden="true">
+            <div class="ref-window">
+              <div class="ref-chrome"><i></i><i></i><i></i></div>
+              <div class="ref-hero"><strong>PhysioVital</strong><i></i></div>
+              <div class="ref-rows"><i></i><i></i><i></i></div>
+            </div>
+          </div>
+          <div class="ref-body">
+            <h3>PhysioVital Düsseldorf</h3>
+            <p>Physiotherapie mit Rezept-Workflow — Termine früh bis abends, online reserviert.</p>
+            <div class="ref-tags"><span>Therapie</span><span>Terminbuchung</span></div>
+            <span class="ref-link">Demo ansehen →</span>
+          </div>
+        </a>
       </div>
     </div>
   </section>

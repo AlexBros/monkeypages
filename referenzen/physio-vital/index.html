@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PhysioVital — Physiotherapie in Düsseldorf</title>
+<meta name="description" content="PhysioVital Düsseldorf: Krankengymnastik, manuelle Therapie, Sportphysio. Termine einfach online buchen." />
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --gruen: #3e9b4f;
+    --tanne: #1d4a26;
+    --sand: #f6f3ea;
+    --sand-2: #ece7d8;
+    --ink: #1c2a1f;
+    --muted: #64705f;
+    --linie: #ddd8c8;
+    --koralle: #e86f4e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+  body {
+    font-family: "Karla", sans-serif;
+    background: var(--sand);
+    color: var(--ink);
+    line-height: 1.68;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: "Sora", sans-serif; line-height: 1.1; }
+  a { color: inherit; }
+  button { font: inherit; cursor: pointer; }
+  .container { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+  :focus-visible { outline: 3px solid var(--koralle); outline-offset: 2px; }
+
+  .demo-badge {
+    position: fixed; bottom: 18px; left: 18px; z-index: 90;
+    background: var(--tanne); color: #fff;
+    font-size: 0.78rem; font-weight: 600;
+    padding: 9px 16px; border-radius: 99px;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(29, 74, 38, 0.35);
+  }
+  .demo-badge:hover { background: var(--koralle); }
+
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(246, 243, 234, 0.94);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--linie);
+  }
+  .nav .container { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .logo { font-family: "Sora", sans-serif; font-weight: 800; font-size: 1.15rem; text-decoration: none; }
+  .logo span { color: var(--gruen); }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a:not(.btn) { text-decoration: none; font-size: 0.93rem; font-weight: 600; color: var(--muted); }
+  .nav-links a:not(.btn):hover { color: var(--ink); }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gruen); color: #fff;
+    font-weight: 700; font-size: 0.95rem;
+    padding: 12px 26px; border-radius: 12px; border: none;
+    text-decoration: none;
+    transition: background 0.15s, transform 0.15s;
+  }
+  .btn:hover { background: var(--tanne); transform: translateY(-2px); }
+  .btn.koralle { background: var(--koralle); }
+  .btn.koralle:hover { background: #d05a3a; }
+
+  .hero {
+    padding: 90px 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 85% 20%, rgba(62, 155, 79, 0.14), transparent),
+      var(--sand);
+  }
+  .hero .container { display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px; align-items: center; }
+  .hero-kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--tanne); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  .hero-kicker::before { content: ""; width: 28px; height: 3px; border-radius: 3px; background: var(--koralle); }
+  .hero h1 { font-size: clamp(2.3rem, 5vw, 3.5rem); font-weight: 800; margin: 16px 0 18px; }
+  .hero h1 span { color: var(--gruen); }
+  .hero p { color: var(--muted); font-size: 1.08rem; max-width: 470px; margin-bottom: 30px; }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero-card {
+    background: var(--tanne); color: #e7f0e2; border-radius: 20px; padding: 30px;
+  }
+  .hero-card h3 { font-size: 1.1rem; color: #fff; margin-bottom: 14px; }
+  .hero-card ul { list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 0.94rem; }
+  .hero-card li { display: flex; gap: 10px; }
+  .hero-card li::before { content: "→"; color: var(--koralle); font-weight: 700; }
+
+  .section { padding: 84px 0; }
+  .section.weiss { background: #fff; border-top: 1px solid var(--linie); border-bottom: 1px solid var(--linie); }
+  .kicker { color: var(--koralle); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; }
+  h2 { font-size: clamp(1.8rem, 3.4vw, 2.4rem); font-weight: 800; margin: 10px 0 14px; }
+  .lead { color: var(--muted); max-width: 560px; }
+
+  .therapien { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 40px; }
+  .therapie {
+    background: var(--sand); border: 1px solid var(--linie); border-radius: 16px; padding: 28px 24px;
+    position: relative;
+  }
+  .section:not(.weiss) .therapie { background: #fff; }
+  .therapie .nr {
+    font-family: "Sora", sans-serif; font-weight: 800; font-size: 0.8rem;
+    color: var(--gruen); margin-bottom: 12px; display: block;
+  }
+  .therapie h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+  .therapie p { font-size: 0.9rem; color: var(--muted); }
+
+  /* Terminbuchung */
+  .booking-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 36px; margin-top: 40px; align-items: start; }
+  .cal-card { background: #fff; border: 1px solid var(--linie); border-radius: 18px; padding: 26px; }
+  .cal-head { font-weight: 700; margin-bottom: 16px; display: flex; justify-content: space-between; }
+  .cal-head small { color: var(--muted); font-weight: 500; }
+  .cal-week { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .cal-day-label { text-align: center; font-size: 0.78rem; font-weight: 700; color: var(--muted); margin-bottom: 6px; }
+  .slot {
+    display: block; width: 100%;
+    border: 1.5px solid var(--linie); background: var(--sand); border-radius: 10px;
+    font-size: 0.82rem; font-weight: 700; padding: 8px 0; margin-bottom: 8px;
+    transition: border-color 0.15s, background 0.15s, color 0.15s;
+  }
+  .slot:hover:not(:disabled) { border-color: var(--gruen); color: var(--gruen); }
+  .slot.selected { background: var(--koralle); border-color: var(--koralle); color: #fff; }
+  .slot:disabled { opacity: 0.35; cursor: not-allowed; text-decoration: line-through; }
+  .booking-form { background: var(--tanne); color: #e7f0e2; border-radius: 18px; padding: 28px; }
+  .booking-form h3 { font-size: 1.15rem; color: #fff; margin-bottom: 16px; }
+  .booking-form label { font-size: 0.8rem; font-weight: 700; color: #b9d0b0; display: block; margin: 12px 0 5px; }
+  .booking-form input, .booking-form select {
+    width: 100%; padding: 11px 13px; border-radius: 10px;
+    border: none; background: #fff;
+    font: inherit; font-size: 0.92rem; color: var(--ink);
+  }
+  .booking-form .btn { width: 100%; justify-content: center; margin-top: 20px; }
+  .booking-selected { font-size: 0.88rem; color: #f5c0ae; min-height: 1.4em; margin-top: 10px; }
+  .booking-success { display: none; text-align: center; padding: 30px 10px; }
+  .booking-success.show { display: block; }
+  .booking-success .big { font-size: 2.4rem; margin-bottom: 10px; }
+
+  footer { background: var(--tanne); color: #b9d0b0; padding: 44px 0 30px; font-size: 0.88rem; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 30px; margin-bottom: 26px; }
+  footer h4 { color: #fff; font-family: "Sora", sans-serif; font-size: 0.95rem; margin-bottom: 10px; }
+  footer a { color: #b9d0b0; text-decoration: none; }
+  footer a:hover { color: #fff; }
+  .footer-note { border-top: 1px solid rgba(255,255,255,0.14); padding-top: 18px; font-size: 0.78rem; }
+
+  @media (max-width: 860px) {
+    .hero .container, .booking-grid { grid-template-columns: 1fr; }
+    .therapien { grid-template-columns: 1fr; }
+    .nav-links a:not(.btn) { display: none; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 520px) {
+    .cal-week { grid-template-columns: repeat(3, 1fr); }
+    .cal-week .cal-col:nth-child(n+4) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<a class="demo-badge" href="../../">🐒 Demo — erstellt von MonkeyPages</a>
+
+<header class="nav">
+  <div class="container">
+    <a class="logo" href="#">Physio<span>Vital</span></a>
+    <nav class="nav-links">
+      <a href="#therapien">Therapien</a>
+      <a href="#praxis">Die Praxis</a>
+      <a href="#termin">Termin</a>
+      <a class="btn koralle" href="#termin">Termin buchen</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div>
+      <span class="hero-kicker">Physiotherapie · Düsseldorf</span>
+      <h1>Wieder in <span>Bewegung</span> kommen.</h1>
+      <p>Krankengymnastik, manuelle Therapie und Sportphysio — mit Behandlungsplänen, die zu Ihrem Alltag passen. Rezept einlösen oder privat buchen.</p>
+      <div class="hero-ctas">
+        <a class="btn koralle" href="#termin">Termin online buchen</a>
+        <a class="btn" href="#therapien">Therapien ansehen</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Gut zu wissen</h3>
+      <ul>
+        <li>Alle Kassen &amp; privat</li>
+        <li>Termine auch früh (ab 7 Uhr) und abends (bis 20 Uhr)</li>
+        <li>Hausbesuche im Stadtgebiet</li>
+        <li>Barrierefreie Praxis im Erdgeschoss</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section weiss" id="therapien">
+  <div class="container">
+    <span class="kicker">Therapien</span>
+    <h2>Behandlung, die bei der Ursache ansetzt.</h2>
+    <p class="lead">Nach einer gründlichen Befundung erstellen wir Ihren persönlichen Behandlungsplan — und erklären jeden Schritt verständlich.</p>
+    <div class="therapien">
+      <div class="therapie"><span class="nr">01</span><h3>Krankengymnastik</h3><p>Aktive Übungstherapie nach OP, Verletzung oder bei chronischen Beschwerden.</p></div>
+      <div class="therapie"><span class="nr">02</span><h3>Manuelle Therapie</h3><p>Gezielte Mobilisation von Gelenken und Muskulatur bei Schmerzen und Blockaden.</p></div>
+      <div class="therapie"><span class="nr">03</span><h3>Sportphysiotherapie</h3><p>Return-to-Sport-Programme für Freizeit- und Leistungssportler.</p></div>
+      <div class="therapie"><span class="nr">04</span><h3>Lymphdrainage</h3><p>Sanfte Entstauungstherapie, auch als Hausbesuch.</p></div>
+      <div class="therapie"><span class="nr">05</span><h3>CMD-Behandlung</h3><p>Therapie bei Kiefergelenks­beschwerden — in Abstimmung mit Ihrem Zahnarzt.</p></div>
+      <div class="therapie"><span class="nr">06</span><h3>Präventionskurse</h3><p>Rückenfit &amp; Faszientraining, bezuschusst von den Krankenkassen.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="praxis">
+  <div class="container">
+    <span class="kicker">Die Praxis</span>
+    <h2>Viel Raum, viel Ruhe, moderne Geräte.</h2>
+    <p class="lead">450 m² mit Trainingsfläche, vier Behandlungsräumen und einem Team aus sechs Therapeutinnen und Therapeuten — mitten in Düsseldorf-Bilk, direkt an der Haltestelle.</p>
+  </div>
+</section>
+
+<section class="section weiss" id="termin">
+  <div class="container">
+    <span class="kicker">Online-Terminbuchung</span>
+    <h2>Ihr Termin — ohne Anruf, ohne Warteschleife.</h2>
+    <p class="lead">Wählen Sie einen freien Termin. Mit Rezept? Einfach beim ersten Besuch mitbringen.</p>
+
+    <div class="booking-grid">
+      <div class="cal-card">
+        <div class="cal-head">Nächste Woche <small>KW 29</small></div>
+        <div class="cal-week" id="calWeek"></div>
+      </div>
+
+      <div class="booking-form">
+        <div id="formFields">
+          <h3>Ihre Daten</h3>
+          <label for="bkName">Name</label>
+          <input id="bkName" type="text" placeholder="Max Mustermann" />
+          <label for="bkPhone">Telefon</label>
+          <input id="bkPhone" type="tel" placeholder="0211 / …" />
+          <label for="bkType">Behandlung</label>
+          <select id="bkType">
+            <option>Krankengymnastik (Rezept)</option>
+            <option>Manuelle Therapie (Rezept)</option>
+            <option>Sportphysio (privat)</option>
+            <option>Erstbefund / Beratung</option>
+          </select>
+          <p class="booking-selected" id="bkSelected">Bitte wählen Sie links einen Termin.</p>
+          <button class="btn koralle" id="bkSubmit">Termin buchen</button>
+        </div>
+        <div class="booking-success" id="bkSuccess">
+          <div class="big">💪</div>
+          <h3>Termin angefragt!</h3>
+          <p style="color:#b9d0b0; font-size:0.94rem;">Wir bestätigen Ihren Termin kurzfristig per SMS. Bis bald in der Praxis!<br /><br /><em style="font-size:0.8rem;">(Demo — es wurde nichts gesendet.)</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>PhysioVital Düsseldorf</h4>
+        <p>Bilker Allee 45<br />40219 Düsseldorf<br />✆ 0211 / 555 123</p>
+      </div>
+      <div>
+        <h4>Öffnungszeiten</h4>
+        <p>Mo–Fr: 7:00–20:00<br />Sa: 9:00–14:00</p>
+      </div>
+      <div>
+        <h4>Rechtliches</h4>
+        <p><a href="#">Impressum</a><br /><a href="#">Datenschutz</a></p>
+      </div>
+    </div>
+    <p class="footer-note">Demo-Website, erstellt von <a href="../../">MonkeyPages</a>. Alle Namen, Zahlen und Kontaktdaten sind frei erfunden.</p>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const DAYS = [
+    { label: "Mo", slots: [["7:30", true], ["10:00", false], ["18:30", true]] },
+    { label: "Di", slots: [["8:00", true], ["12:30", true], ["19:00", false]] },
+    { label: "Mi", slots: [["7:00", false], ["11:00", true], ["17:30", true]] },
+    { label: "Do", slots: [["9:00", true], ["14:00", true], ["18:00", false]] },
+    { label: "Fr", slots: [["7:30", true], ["10:30", false], ["13:00", true]] },
+  ];
+  const week = document.getElementById("calWeek");
+  const selectedEl = document.getElementById("bkSelected");
+  let selected = null;
+
+  DAYS.forEach((day) => {
+    const col = document.createElement("div");
+    col.className = "cal-col";
+    col.innerHTML = `<div class="cal-day-label">${day.label}</div>`;
+    day.slots.forEach(([time, free]) => {
+      const b = document.createElement("button");
+      b.className = "slot";
+      b.textContent = time;
+      if (!free) b.disabled = true;
+      else b.addEventListener("click", () => {
+        document.querySelectorAll(".slot.selected").forEach((s) => s.classList.remove("selected"));
+        b.classList.add("selected");
+        selected = `${day.label} um ${time} Uhr`;
+        selectedEl.textContent = `Gewählt: ${selected}`;
+      });
+      col.appendChild(b);
+    });
+    week.appendChild(col);
+  });
+
+  document.getElementById("bkSubmit").addEventListener("click", () => {
+    if (!selected) { selectedEl.textContent = "⚠ Bitte zuerst links einen Termin wählen."; return; }
+    document.getElementById("formFields").style.display = "none";
+    document.getElementById("bkSuccess").classList.add("show");
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Malerbetrieb Krüger — Meisterbetrieb in Bonn</title>
+<meta name="description" content="Malerbetrieb Krüger in Bonn: Fassadenanstrich, Innenräume, Lackarbeiten. Meisterbetrieb seit 1998. Jetzt online Termin buchen." />
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --blau: #21409a;
+    --blau-dunkel: #16265c;
+    --orange: #f2591c;
+    --papier: #fafaf7;
+    --nebel: #eef0f5;
+    --ink: #141c30;
+    --muted: #5c6579;
+    --linie: #dcdfe8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+  body {
+    font-family: "Inter", sans-serif;
+    background: var(--papier);
+    color: var(--ink);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: "Archivo", sans-serif; font-stretch: 110%; line-height: 1.08; }
+  a { color: inherit; }
+  button { font: inherit; cursor: pointer; }
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  :focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; }
+
+  .demo-badge {
+    position: fixed; bottom: 18px; left: 18px; z-index: 90;
+    background: #141c30; color: #fff;
+    font-size: 0.78rem; font-weight: 600;
+    padding: 9px 16px; border-radius: 99px;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(20, 28, 48, 0.35);
+  }
+  .demo-badge:hover { background: var(--orange); }
+
+  .topbar {
+    background: var(--blau-dunkel); color: #c8d2ee;
+    font-size: 0.82rem; padding: 7px 0;
+  }
+  .topbar .container { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(250, 250, 247, 0.94);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--linie);
+  }
+  .nav .container { display: flex; align-items: center; justify-content: space-between; height: 66px; }
+  .logo { font-family: "Archivo", sans-serif; font-weight: 850; font-stretch: 115%; font-size: 1.15rem; text-transform: uppercase; letter-spacing: 0.02em; text-decoration: none; }
+  .logo span { color: var(--orange); }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a:not(.btn) { text-decoration: none; font-size: 0.93rem; font-weight: 500; color: var(--muted); }
+  .nav-links a:not(.btn):hover { color: var(--ink); }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--orange); color: #fff;
+    font-weight: 700; font-size: 0.95rem;
+    padding: 12px 24px; border-radius: 8px; border: none;
+    text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(242, 89, 28, 0.4); }
+  .btn.blue { background: var(--blau); }
+
+  .hero { background: var(--blau); color: #fff; padding: 90px 0; position: relative; overflow: hidden; }
+  .hero::after {
+    content: "";
+    position: absolute; right: -120px; top: -60px;
+    width: 420px; height: 420px;
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.06) 0 22px, transparent 22px 44px);
+    border-radius: 50%;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    background: var(--orange); color: #fff;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 6px 14px; border-radius: 5px; margin-bottom: 22px;
+  }
+  .hero h1 { font-size: clamp(2.4rem, 5.4vw, 3.9rem); font-weight: 850; margin-bottom: 18px; max-width: 640px; }
+  .hero p { font-size: 1.12rem; color: #c8d2ee; max-width: 520px; margin-bottom: 32px; }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero-facts { display: flex; gap: 34px; flex-wrap: wrap; margin-top: 44px; }
+  .hero-facts div strong { font-family: "Archivo", sans-serif; font-size: 1.6rem; font-weight: 800; display: block; }
+  .hero-facts div span { font-size: 0.82rem; color: #c8d2ee; }
+
+  .section { padding: 84px 0; }
+  .section.alt { background: var(--nebel); }
+  .kicker { color: var(--orange); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; }
+  h2 { font-size: clamp(1.8rem, 3.6vw, 2.5rem); font-weight: 800; margin: 10px 0 14px; }
+  .lead { color: var(--muted); max-width: 560px; }
+
+  .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 40px; }
+  .card {
+    background: #fff; border: 1px solid var(--linie); border-radius: 12px; padding: 26px 22px;
+    border-top: 4px solid var(--blau);
+  }
+  .card:nth-child(even) { border-top-color: var(--orange); }
+  .card h3 { font-size: 1.05rem; font-weight: 750; margin-bottom: 8px; }
+  .card p { font-size: 0.9rem; color: var(--muted); }
+
+  .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; margin-top: 12px; }
+  .about-grid ul { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+  .about-grid li { display: flex; gap: 10px; font-size: 0.98rem; }
+  .about-grid li::before { content: "✓"; color: var(--orange); font-weight: 800; }
+  .photo-tile {
+    aspect-ratio: 4 / 3; border-radius: 14px;
+    background:
+      linear-gradient(135deg, rgba(33, 64, 154, 0.92), rgba(22, 38, 92, 0.92)),
+      repeating-linear-gradient(-45deg, #f2591c 0 26px, #e14e13 26px 52px);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-family: "Archivo", sans-serif; font-weight: 800; font-size: 1.1rem;
+    text-align: center; padding: 20px;
+  }
+
+  /* Terminbuchung */
+  .booking { background: var(--blau-dunkel); color: #fff; }
+  .booking .kicker { color: #ff8a55; }
+  .booking .lead { color: #c8d2ee; }
+  .booking-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 36px; margin-top: 40px; align-items: start; }
+  .cal-card { background: #fff; color: var(--ink); border-radius: 14px; padding: 26px; }
+  .cal-head { font-weight: 700; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; }
+  .cal-head small { color: var(--muted); font-weight: 500; }
+  .cal-week { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .cal-day-label { text-align: center; font-size: 0.78rem; font-weight: 700; color: var(--muted); margin-bottom: 6px; }
+  .slot {
+    display: block; width: 100%;
+    border: 1.5px solid var(--linie); background: #fff; border-radius: 8px;
+    font-size: 0.82rem; font-weight: 600; padding: 8px 0; margin-bottom: 8px;
+    transition: border-color 0.15s, background 0.15s, color 0.15s;
+  }
+  .slot:hover:not(:disabled) { border-color: var(--blau); color: var(--blau); }
+  .slot.selected { background: var(--orange); border-color: var(--orange); color: #fff; }
+  .slot:disabled { opacity: 0.35; cursor: not-allowed; text-decoration: line-through; }
+  .booking-form { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.16); border-radius: 14px; padding: 26px; }
+  .booking-form h3 { font-size: 1.15rem; font-weight: 750; margin-bottom: 16px; }
+  .booking-form label { font-size: 0.8rem; font-weight: 600; color: #c8d2ee; display: block; margin: 12px 0 5px; }
+  .booking-form input, .booking-form select {
+    width: 100%; padding: 11px 13px; border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.95);
+    font: inherit; font-size: 0.92rem; color: var(--ink);
+  }
+  .booking-form .btn { width: 100%; justify-content: center; margin-top: 20px; }
+  .booking-selected { font-size: 0.88rem; color: #ffd9c5; min-height: 1.4em; margin-top: 10px; }
+  .booking-success { display: none; text-align: center; padding: 30px 10px; }
+  .booking-success.show { display: block; }
+  .booking-success .big { font-size: 2.4rem; margin-bottom: 10px; }
+
+  .quote-strip { background: var(--orange); color: #fff; padding: 40px 0; }
+  .quote-strip .container { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .quote-strip strong { font-family: "Archivo", sans-serif; font-size: 1.35rem; font-weight: 800; }
+
+  footer { background: var(--blau-dunkel); color: #98a6cf; padding: 44px 0 30px; font-size: 0.88rem; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 30px; margin-bottom: 26px; }
+  footer h4 { color: #fff; font-size: 0.95rem; margin-bottom: 10px; }
+  footer a { color: #98a6cf; text-decoration: none; }
+  footer a:hover { color: #fff; }
+  .footer-note { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 18px; font-size: 0.78rem; }
+
+  @media (max-width: 860px) {
+    .cards { grid-template-columns: repeat(2, 1fr); }
+    .about-grid, .booking-grid { grid-template-columns: 1fr; }
+    .nav-links a:not(.btn) { display: none; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 520px) {
+    .cards { grid-template-columns: 1fr; }
+    .cal-week { grid-template-columns: repeat(3, 1fr); }
+    .cal-week .cal-col:nth-child(n+4) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<a class="demo-badge" href="../../">🐒 Demo — erstellt von MonkeyPages</a>
+
+<div class="topbar">
+  <div class="container">
+    <span>Meisterbetrieb seit 1998 · Bonn &amp; Umgebung</span>
+    <span>✆ 0228 / 123 456 · info@maler-krueger.example</span>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="container">
+    <a class="logo" href="#">Krüger<span>.</span></a>
+    <nav class="nav-links">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#ueber-uns">Über uns</a>
+      <a href="#termin">Termin</a>
+      <a class="btn" href="#termin">Termin buchen</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="hero-eyebrow">Meisterbetrieb · Bonn</span>
+    <h1>Saubere Arbeit.<br />Klare Preise.</h1>
+    <p>Ihr Malerbetrieb für Fassade, Innenräume und Lackarbeiten — pünktlich, ordentlich und mit Festpreisangebot vor Projektstart.</p>
+    <div class="hero-ctas">
+      <a class="btn" href="#termin">Besichtigungstermin buchen</a>
+      <a class="btn blue" href="#leistungen">Unsere Leistungen</a>
+    </div>
+    <div class="hero-facts">
+      <div><strong>25+</strong><span>Jahre Erfahrung</span></div>
+      <div><strong>1.400</strong><span>Projekte abgeschlossen</span></div>
+      <div><strong>4,9 ★</strong><span>Google-Bewertung</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="leistungen">
+  <div class="container">
+    <span class="kicker">Leistungen</span>
+    <h2>Was wir für Sie streichen, lackieren, verputzen.</h2>
+    <p class="lead">Vom Einfamilienhaus bis zum Bürogebäude — wir arbeiten sauber, termintreu und mit Materialien, die halten.</p>
+    <div class="cards">
+      <div class="card"><h3>Fassadenanstrich</h3><p>Wetterfeste Anstriche inkl. Gerüst, Reinigung und Ausbesserung von Putzschäden.</p></div>
+      <div class="card"><h3>Innenräume</h3><p>Wände, Decken, Spachteltechnik — staubarm und mit Abdeckung aller Möbel.</p></div>
+      <div class="card"><h3>Lackarbeiten</h3><p>Türen, Zargen, Heizkörper und Holzflächen — glatt, deckend, langlebig.</p></div>
+      <div class="card"><h3>Tapezierarbeiten</h3><p>Von Raufaser bis Designtapete, inklusive Beratung bei der Auswahl.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="ueber-uns">
+  <div class="container about-grid">
+    <div>
+      <span class="kicker">Über uns</span>
+      <h2>Ein Familienbetrieb, auf den Sie sich verlassen können.</h2>
+      <p class="lead">Seit 1998 führt Malermeister Thomas Krüger den Betrieb in zweiter Generation — heute mit acht Gesellen und zwei Azubis.</p>
+      <ul>
+        <li>Festpreisangebot nach kostenloser Besichtigung</li>
+        <li>Saubere Baustelle — besenrein bei Übergabe</li>
+        <li>Termintreue: Wir kommen, wann wir es sagen</li>
+        <li>5 Jahre Gewährleistung auf alle Arbeiten</li>
+      </ul>
+    </div>
+    <div class="photo-tile">Foto: Team Krüger<br />vor dem Firmenwagen</div>
+  </div>
+</section>
+
+<section class="section booking" id="termin">
+  <div class="container">
+    <span class="kicker">Online-Terminbuchung</span>
+    <h2>Besichtigung buchen — in 30 Sekunden.</h2>
+    <p class="lead">Wählen Sie einen freien Termin, wir kommen vorbei, schauen uns alles an und Sie bekommen ein Festpreisangebot. Kostenlos und unverbindlich.</p>
+
+    <div class="booking-grid">
+      <div class="cal-card">
+        <div class="cal-head">Nächste Woche <small>KW 29</small></div>
+        <div class="cal-week" id="calWeek"></div>
+      </div>
+
+      <div class="booking-form" id="bookingForm">
+        <div id="formFields">
+          <h3>Ihre Daten</h3>
+          <label for="bkName">Name</label>
+          <input id="bkName" type="text" placeholder="Max Mustermann" />
+          <label for="bkPhone">Telefon</label>
+          <input id="bkPhone" type="tel" placeholder="0228 / …" />
+          <label for="bkType">Anliegen</label>
+          <select id="bkType">
+            <option>Fassadenanstrich</option>
+            <option>Innenräume</option>
+            <option>Lackarbeiten</option>
+            <option>Tapezierarbeiten</option>
+            <option>Sonstiges</option>
+          </select>
+          <p class="booking-selected" id="bkSelected">Bitte wählen Sie links einen Termin.</p>
+          <button class="btn" id="bkSubmit">Termin verbindlich anfragen</button>
+        </div>
+        <div class="booking-success" id="bkSuccess">
+          <div class="big">✅</div>
+          <h3>Vielen Dank!</h3>
+          <p style="color:#c8d2ee; font-size:0.94rem;">Ihre Terminanfrage ist eingegangen. Wir bestätigen sie innerhalb weniger Stunden per SMS.<br /><br /><em style="font-size:0.8rem;">(Demo — es wurde nichts gesendet.)</em></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="quote-strip">
+  <div class="container">
+    <strong>Lieber erst ein Angebot? Rufen Sie uns an: 0228 / 123 456</strong>
+    <a class="btn blue" href="#termin">Oder Termin online buchen</a>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>Malerbetrieb Krüger</h4>
+        <p>Musterstraße 12<br />53111 Bonn<br />✆ 0228 / 123 456</p>
+      </div>
+      <div>
+        <h4>Öffnungszeiten</h4>
+        <p>Mo–Fr: 7:00–17:00<br />Sa: nach Vereinbarung</p>
+      </div>
+      <div>
+        <h4>Rechtliches</h4>
+        <p><a href="#">Impressum</a><br /><a href="#">Datenschutz</a></p>
+      </div>
+    </div>
+    <p class="footer-note">Demo-Website, erstellt von <a href="../../">MonkeyPages</a>. Alle Namen, Zahlen und Kontaktdaten sind frei erfunden.</p>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const DAYS = [
+    { label: "Mo", slots: [["9:00", false], ["11:30", true], ["15:00", false]] },
+    { label: "Di", slots: [["8:30", true], ["10:00", true], ["14:00", false]] },
+    { label: "Mi", slots: [["9:00", true], ["13:30", false], ["16:00", true]] },
+    { label: "Do", slots: [["8:00", false], ["11:00", true], ["15:30", true]] },
+    { label: "Fr", slots: [["9:30", true], ["12:00", true], ["14:30", false]] },
+  ];
+  const week = document.getElementById("calWeek");
+  const selectedEl = document.getElementById("bkSelected");
+  let selected = null;
+
+  DAYS.forEach((day) => {
+    const col = document.createElement("div");
+    col.className = "cal-col";
+    col.innerHTML = `<div class="cal-day-label">${day.label}</div>`;
+    day.slots.forEach(([time, free]) => {
+      const b = document.createElement("button");
+      b.className = "slot";
+      b.textContent = time;
+      if (!free) b.disabled = true;
+      else b.addEventListener("click", () => {
+        document.querySelectorAll(".slot.selected").forEach((s) => s.classList.remove("selected"));
+        b.classList.add("selected");
+        selected = `${day.label} um ${time} Uhr`;
+        selectedEl.textContent = `Gewählt: ${selected}`;
+      });
+      col.appendChild(b);
+    });
+    week.appendChild(col);
+  });
+
+  document.getElementById("bkSubmit").addEventListener("click", () => {
+    if (!selected) { selectedEl.textContent = "⚠ Bitte zuerst links einen Termin wählen."; return; }
+    document.getElementById("formFields").style.display = "none";
+    document.getElementById("bkSuccess").classList.add("show");
+  });
+})();
+</script>
+
+</body>
+</html>
