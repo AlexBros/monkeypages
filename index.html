@@ -476,14 +476,14 @@
   .mockup[data-theme="handwerk"] {
     --m-accent: #ff7a29; --m-deep: #a04f16; --m-tint: #fdf0e4;
     --m-hero:
-      repeating-linear-gradient(125deg, rgba(255,255,255,0.06) 0 3px, transparent 3px 17px),
-      linear-gradient(130deg, #b0521a 0%, #86400f 100%);
+      linear-gradient(92deg, rgba(122, 52, 12, 0.9) 0%, rgba(122, 52, 12, 0.55) 34%, rgba(122, 52, 12, 0) 62%),
+      url("img/banner-handwerk.png");
   }
   .mockup[data-theme="praxis"] {
     --m-accent: #2f9e5b; --m-deep: #175e3c; --m-tint: #e9f6ee;
     --m-hero:
-      radial-gradient(rgba(255,255,255,0.12) 1.4px, transparent 1.6px) 0 0 / 15px 15px,
-      linear-gradient(130deg, #1c6e47 0%, #114630 100%);
+      linear-gradient(92deg, rgba(10, 54, 35, 0.9) 0%, rgba(10, 54, 35, 0.55) 34%, rgba(10, 54, 35, 0) 62%),
+      url("img/banner-praxis.png");
   }
 
   .mock-chrome {
@@ -520,24 +520,15 @@
   .mock-hero {
     position: relative;
     overflow: hidden;
-    background: var(--m-hero, var(--m-deep));
+    background: var(--m-hero, var(--m-deep)) center right / cover no-repeat;
     color: #fff;
     padding: 26px 20px 28px;
+    min-height: 158px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
-  .mock-hero > .mock-eyebrow,
-  .mock-hero > .mock-headline { position: relative; z-index: 1; }
-  .mh-deco {
-    position: absolute;
-    top: 50%; right: -14px;
-    transform: translateY(-50%) rotate(-12deg);
-    width: 122px; height: 122px;
-    color: #fff;
-    opacity: 0.16;
-    z-index: 0;
-    pointer-events: none;
-  }
-  .mockup[data-theme="handwerk"] .mh-deco.tooth,
-  .mockup[data-theme="praxis"] .mh-deco.paint { display: none; }
+  .mock-hero .mock-headline { text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25); }
   .mock-eyebrow {
     font-family: var(--f-mono);
     font-size: 0.64rem;
@@ -1280,15 +1271,6 @@
                 <span class="mock-cta">Termin buchen</span>
               </div>
               <div class="mock-hero">
-                <svg class="mh-deco paint" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect x="9" y="10" width="30" height="14" rx="3" />
-                  <path d="M39 17h7a4 4 0 0 1 4 4v3a4 4 0 0 1-4 4H26a4 4 0 0 0-4 4v3" />
-                  <rect x="16" y="33" width="12" height="9" rx="2" />
-                  <path d="M22 42v11" />
-                </svg>
-                <svg class="mh-deco tooth" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M32 15c-5-5-13-6-17-2.5C11 16 12 24 14 31c1.4 5 2 10 2.6 15 .3 3 1 5.5 3.4 5.5 2 0 2.8-2.6 3.2-5 .5-3 .8-6 1.6-9 .5-1.8 4-1.8 4.4 0 .8 3 1.1 6 1.6 9 .4 2.4 1.2 5 3.2 5 2.4 0 3.1-2.5 3.4-5.5.6-5 1.2-10 2.6-15 2-7 3-15-1-18.5C45 9 37 10 32 15Z" />
-                </svg>
                 <p class="mock-eyebrow" id="mockEyebrow">Meisterbetrieb · Bonn</p>
                 <p class="mock-headline" id="mockHeadline">Saubere Arbeit.<br />Klare Preise.</p>
               </div>
